@@ -24,11 +24,11 @@
 
     <p>There is no software explicitly for FURM.  FURM is a
       <strong>method</strong> by which models are created.  The only
-      software associated with FURM so far is the code for the IPRL
+      software associated with FURM so far is the code for the ISL
       models and the experimental apparatus in which they sit.</p>
 
     <h2>Downloads</h2>
-    <p>The IPRL software will is not yet available for download.</p>
+    <p>The ISL software will is not yet available for download.</p>
 
     <h2>Documentation</h2>
 
@@ -43,7 +43,7 @@
 
     <h2>Main Class Diagram</h2>
 
-    <p>This is the class diagram for the experiment level of the IPRL.
+    <p>This is the class diagram for the experiment level of the ISL.
       This is the level at which experiments are set up, controlled,
       and logged.</p> <center><img alt="Main Class Diagram"
       src="./img/main_inheritance.png"></center>
@@ -60,9 +60,9 @@
     <h2>Articulated Model Inheritance</h2>
 
     <p>The ArtModel is clearly the most complicated component of the
-      IPRL.  When looking at this and the subsequent constituents
+      ISL.  When looking at this and the subsequent constituents
       diagrams, refer to the description of the modelon the <a
-      href="./iprl.html" target="_top">IPRL</a> page.</p> <center><img
+      href="./iprl.html" target="_top">ISL</a> page.</p> <center><img
       alt="ArtModel Inheritance Diagram"
       src="./img/artModel_inheritance.png"></center>
 
@@ -76,9 +76,9 @@
     <h2>Model Utilities Inheritance</h2>
 
     <p>The model utilities are miscellaneous things we had to create
-      to augment the Swarm framework to support the IPRL.  Other ABM
+      to augment the Swarm framework to support the ISL.  Other ABM
       packages have analogues to many of these components and when the
-      IPRL is ported to another platform, this package is expected to
+      ISL is ported to another platform, this package is expected to
       change accordingly.</p> <center><img alt="ModelUtils
       Inheritance" src="./img/modelUtils_inheritance.png"></center>
 
@@ -94,7 +94,7 @@
 
     <p>These are a few random number distributions are provided in the
       global scope for use in the various models. They're "local" to
-      the IPRL and distinct from the default distributions provided by
+      the ISL and distinct from the default distributions provided by
       Swarm.</p> <center><img alt="LocalRandom Constituents"
       src="./img/LocalRandom_constituents.png"></center>
 
@@ -102,7 +102,7 @@
 
     <ul>
 
-      <li>The IPRL is written using a combination of Objective-C and
+      <li>The ISL is written using a combination of Objective-C and
         C++.  Hence, the elements of these diagrams do not translate
         as directly as they would to Java.</li>
 
@@ -145,12 +145,12 @@
         programming practices.  For example, there is alot of
         crosstalk between the packages and it is sometimes
         questionable whether certain attributes belong in certain
-        classes.  As FURM is refined, the IPRL will be augmented with
+        classes.  As FURM is refined, the ISL will be augmented with
         more and more automation and mechanisms for automatically
         making decisions.  This automation will demonstrate the
         feasibility of FURM and it will likely produce clinically
         useful in silico models of the liver.  But, the expectation is
-        that the IPRL will be reimplemented after its usefulness is
+        that the ISL will be reimplemented after its usefulness is
         demonstrated.</li>
 
     </ul>
