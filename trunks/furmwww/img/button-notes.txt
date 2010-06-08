@@ -1,0 +1,24 @@
+buttons created with the gimp
+xtns->script-fu->buttons->round button
+font size 16 pixels
+font: helvetica bold
+upper color:
+      hue: 28.71
+      saturation: 0.64
+      value: 1.00
+      red: 1.00
+      green: 0.67
+      blue: 0.36
+
+lower color:
+      hue: 28.36
+      saturation: 0.64
+      value: 0.67
+      red: 0.67
+      green: 0.45
+      blue: 0.24
+
+padding [X,Y]: [4,4]
+bevel width: 2
+round ratio: 1.0
+
