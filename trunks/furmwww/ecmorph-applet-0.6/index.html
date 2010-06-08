@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+<TITLE>EC Morphogenesis Applet</TITLE>
+</HEAD>
+<BODY>
+
+<!-- NOTE:
+	Put this file in its own directory on a website; and put next to
+	it on the website the 'ecmorph-0.5.jar'.
+
+	If you try loading the file from your computer's local hard
+	drive, even if the ecmorph-0.5.jar file is present, it may not work
+	unless the ecmorph-0.5.jar file is signed.  It's a security feature
+	in java.
+-->
+
+<h1>ECMorph Applet</h1>
+
+
+<P>This is a toy model of Endothelial Cell Morphogenesis (ECMorph).
+It is intended as an example of a very high level synthetic,
+articulated model of cysts forming in vitro.  <a
+href="#citation">(Mirjam et al)</a>
+
+<p>The "Start ECMorph" button below starts a Java applet that runs
+ECMorph.  If you don't see the button, check to be sure you have the
+Java Runtime Environment installed for your browser.  You can download
+it from: <a
+href="http://java.sun.com/javase/downloads/index.jsp">http://java.sun.com/javase/downloads/index.jsp</a>.
+See the other <a href="#notes">notes at the end.</a>
+
+<p>After clicking "Start ECMorph", you should see two windows pop up on your screen, looking like:
+
+<p><table>
+<tr valign="top">
+    <td><img src="./img/screenshot1.png" alt="Screenshot of environment."></td>
+    <td><img src="./img/screenshot2.png" alt="Screenshot of the control panel."></td>
+</tr>
+</table>
+
+<p>To get a sense for what the model does, simply push the play
+button, which is the little triangle pointing to the right in the
+bottom left of the control panel.  Then immediately push the pause
+button, which is just to the right of the play button.  You should see
+something like the following:
+
+<p><img src="./img/screenshot3.png" alt="Screenshot of environment."></td>
+
+<p>The environment consists of a 2D hexagonal grid.  Each point in
+that grid represents a space that can be empty or filled with a cell
+(a white circle) or a hypothetical substance called "factor1" or both.
+Red grid points show a high concentration of factor1 and black grid
+points show no "factor1".
+
+<p>At each simulation "cycle," a schedule of events is executed where
+the individual events are associated with objects in the simulation.
+The cell objects examine their surroundings and, based upon what they
+find, will divide, die, and consume or produce factor1.  Cells are
+composite objects consisting of 6 membrane components (one for each
+side in a hexagonal grid) and 3 "interface functions".  The membrane
+components provide the cell with the ability to sense and act upon its
+environment.  The 3 "interface functions" and the logic that
+reconciles those functions constitute the cell's decision making
+logic.  Each interface function works toward a single constraint:
+<ul>
+<li>The Apical Interface Function (AIF) tries to generate a region
+next to the cell that has a large amount of factor1.</li>
+<li>The Basal Interface Function (BIF) tries to generate a region next
+to the cell that is very low in factor1.</li>
+<li>The Junction Interface Function (JIF) tries to ensure that the
+cell is a part of a community of cells, attached to others but not
+completely surrounded.</li>
+</ul>
+
+<p>The model intends to explore whether (and if so under what
+conditions) such an assembled model might generate interesting
+collections of cells.  In particular, we'd like to be able to generate
+cysts and tubules.
+
+<p>A more complete description is provided in the About tab of the
+control panel.  You can scroll down or make the control panel window
+larger to see it.  You should be able to play around with the model at
+this point.  But, <a href="#demo">below</a>, we'll walk through a
+particular use case of the model just to give a clear idea of how it
+might be used.
+
+<p>
+<center>
+<table border="10.0">
+<tr><td>
+<SCRIPT LANGUAGE="JavaScript"><!--
+    var _info = navigator.userAgent; var _ns = false;
+    var _ie = (_info.indexOf("MSIE") > 0 && _info.indexOf("Win") > 0 && _info.indexOf("Windows 3.1") < 0);
+//--></SCRIPT>
+<COMMENT><SCRIPT LANGUAGE="JavaScript1.1"><!--
+    var _ns = (navigator.appName.indexOf("Netscape") >= 0 && ((_info.indexOf("Win") > 0 && _info.indexOf("Win16") < 0 && java.lang.System.getProperty("os.version").indexOf("3.5") < 0) || (_info.indexOf("Sun") > 0) || (_info.indexOf("Linux") > 0)));
+//--></SCRIPT></COMMENT>
+
+<SCRIPT LANGUAGE="JavaScript"><!--
+    if (_ie == true) document.writeln('<OBJECT classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" WIDTH=150 HEIGHT=100  codebase="http://java.sun.com/products/plugin/1.1.1/jinstall-111-win32.cab#Version=1,1,1,0"><NOEMBED><XMP>');
+    else if (_ns == true) document.writeln('<EMBED type="application/x-java-applet;version=1.1" java_CODE="sim.display.SimApplet.class" java_ARCHIVE="ecmorph-0.5.jar" WIDTH=300 HEIGHT=30  Simulation="ecmorph.ECMorphGUI" Name="ECMorph"  pluginspage="http://java.sun.com/products/plugin/1.1.1/plugin-install.html"><NOEMBED><XMP>');
+//--></SCRIPT>
+
+<APPLET CODE="sim.display.SimApplet.class" ARCHIVE="ecmorph-0.5.jar" WIDTH=300 HEIGHT=30 ></XMP>
+<PARAM NAME=CODE VALUE="sim.display.SimApplet.class" >
+<PARAM NAME=ARCHIVE VALUE="ecmorph-0.5.jar" >
+
+<PARAM NAME="type" VALUE="application/x-java-applet;version=1.1">
+<PARAM NAME="Simulation" VALUE="ecmorph.ECMorphGUI">
+<PARAM NAME="Name" VALUE="ECMorph">
+</APPLET>
+</NOEMBED></EMBED></OBJECT>
+</td></tr></table>
+</center>
+
+<a name="demo"><h2>Changing the Diffusion Parameters</h2>
+
+<p>By default, the factor1 is set so that it cannot diffuse, which
+causes the model to show bright red grid points wherever there is any
+factor1.  There are two parameters by which we can manipulate how
+factor1 diffuses: the evaporation and diffusion rates.  To manipulate
+these:
+
+<ol>
+<li>First run the model with the default settings by hitting the play
+button.  Then after watching it for awhile, hit the stop button.</li>
+
+<li>Now we'll change the parameters and run it again.  Click on the
+"Model" tab in the control panel.  And stretch the window so that you
+can see all the widgets in the window.  Like:
+
+<p><img src="./img/screenshot4.png" alt="Model tab in the control
+panel." align="middle"></li>
+
+<li>Next click the "View" button at the bottom of the Model tab.  This
+should open a new window that allows you to view the parameters for
+the "World".
+
+<p><img src="./img/screenshot5.png" alt="View of the World
+parameters." align="middle"></li>
+
+<li>The evaporation rate sets how much of any diffusive material in
+the space "evaporates" during each simulation cycle.  However, it is
+inverted.  If the evaporation rate is, say, 1.0 (the default), then
+zero factor1 will evaporate during each cycle.  If it's 0.75, then 25%
+of the factor1 at any given grid point will evaporate for each cycle
+that passes.  Place the cursor in the evaporation rate box, delete the
+1.0 there and type in: 0.99.</li>
+
+<li>Now hit the play button.  The simulation may or may not execute
+forever because it is stochastic.  If it stopped, it might have left a
+"trace" of factor1 in the space.  If there were more tasks the
+simulation had to perform, you'd see the red fade to black.  But,
+being a discrete event simulation where the only valid events are
+related to cells, when all the cells are gone, the simulation ends.
+If it didn't stop, then you should simply notice that the red factor1
+doesn't stick around very long before it evaporates.  Hit the stop
+button.
+
+<li>Now let's change the evaporation rate back to 1.0 so that no
+evaporation occurs.  And we'll change the diffusion rate from 0.0004
+(4.0E-04) to 0.001.  Then hit the play button again.  (Note that
+sometimes the framework gets confused about which gui widgets you can
+edit.  If after running and stopping the simulation, you can't type in
+a widget, just move the mouse around and click in the other windows a
+few times.  When you come back to the widget you were trying to edit,
+you should be able to edit the values again.)</li>
+
+<li>Again, if the simulation doesn't end quickly, you will see the red
+factor1 fade over time after it is placed in that grid point by a
+cell.</li>
+
+</ol>
+</a>
+
+<h2>Changing the experiment size</h2>
+
+<p>To get an idea of what the sim can do, hit the stop button to be
+sure it's stopped.  Then try setting the world size to 300x300 and the
+initial cell count to 300.  If you have a relatively fast computer
+with enough memory, this should run well enough.  Note that you may
+have to increase the amount of memory available to the Java VM by
+running the Java Control Panel and editing the applet settings.
+
+<a name="notes"><h2>Notes:</h2>
+<ul>
+
+<li>If you close a display, it is hidden -- you can get it back under
+the Displays tab in the console window.  If you close the the console
+window, the simulation ends.</li>
+
+<li>By default, the grid points are visualized as squares.  This is
+just in the visualization.  It's set that way because rendering the
+hexagonal grid is computationally expensive and provides little
+benefit.  If you'd like to see the hex grid points, Click on the Model
+tab in the control panel and select the Hexagons from the
+"DisplayGridCellsAs" drop down list.</li>
+
+</ul>
+</a>
+
+<h2>References</h2>
+<p><cite><a name="citation">Mirjam M.P. Zegers, Lucy E. O'Brien, Wei
+Yu, Anirban Datta and Keith E. Most ov, "Epithelial polarity and
+tubulogenesis in vitro" in TRENDS in Cell Biology, Vol. 13 No.4, April
+2003.</a></cite>
+
+</BODY>
+</HTML>
+
