@@ -1,0 +1,179 @@
+<html>
+   <head>
+      <title>FURM - Software</title>
+          <style>
+             dt {
+               font-weight: bold;
+             }
+             .main {
+               text-align: left;
+             }
+             dd {
+               line-height: 200%;
+             }
+             td {
+               text-align: center;
+               font-weight: bold;
+             }
+          </style>
+   </head>
+  <body bgcolor="#ffffcc" text="#000000" link="#99ccff" alink="#cc00cc" vlink="#cc0066">
+    <iframe src="menu.html" frameborder="0" width="100%"></iframe>
+
+    <center><h1>Software</h1></center>
+
+    <p>There is no software explicitly for FURM.  FURM is a
+      <strong>method</strong> by which models are created.  The only
+      software associated with FURM so far is the code for the IPRL
+      models and the experimental apparatus in which they sit.</p>
+
+    <h2>Downloads</h2>
+    <p>The IPRL software will is not yet available for download.</p>
+
+    <h2>Documentation</h2>
+
+    <p>The only documentation we have so far is the content of our
+      Technical Report and submitted papers, available in the <a
+      href="./documents.html" target="_top">Documents</a> section.</p>
+
+    <p>However, below are some UML-ish diagrams that help explain the
+      structure of the software.  These diagrams have been
+      purposefully simplified to get across the primary structure of
+      the system.</p>
+
+    <h2>Main Class Diagram</h2>
+
+    <p>This is the class diagram for the experiment level of the IPRL.
+      This is the level at which experiments are set up, controlled,
+      and logged.</p> <center><img alt="Main Class Diagram"
+      src="./img/main_inheritance.png"></center>
+
+    <h2>Reference Model Inheritance Diagram</h2>
+
+    <p>This shows the rather simple inheritance relationships used in
+      the RefModel.  The simplicity of this diagram is not really
+      deceiving because this model really is just a simple
+      mathematical function evaluated at each time step.</p>
+      <center><img alt="RefModel Inheritance Diagram"
+      src="./img/refModel_inheritance.png"></center>
+
+    <h2>Articulated Model Inheritance</h2>
+
+    <p>The ArtModel is clearly the most complicated component of the
+      IPRL.  When looking at this and the subsequent constituents
+      diagrams, refer to the description of the modelon the <a
+      href="./iprl.html" target="_top">IPRL</a> page.</p> <center><img
+      alt="ArtModel Inheritance Diagram"
+      src="./img/artModel_inheritance.png"></center>
+
+    <h2>Articulated Model Constituents</h2>
+
+    <p>This diagram lists the classes whose objects participate in the
+      evaluation of the ArtModel.  It indicates run-time
+      composition.</p> <center><img alt="ArtModel Constituents"
+      src="./img/artModel_constituents.png"></center>
+
+    <h2>Model Utilities Inheritance</h2>
+
+    <p>The model utilities are miscellaneous things we had to create
+      to augment the Swarm framework to support the IPRL.  Other ABM
+      packages have analogues to many of these components and when the
+      IPRL is ported to another platform, this package is expected to
+      change accordingly.</p> <center><img alt="ModelUtils
+      Inheritance" src="./img/modelUtils_inheritance.png"></center>
+
+    <h2>Graph Package Inheritance</h2>
+
+    <p>This is a modified version of a directed graph library
+      contribution to Swarm.  There are a number of changes we made to
+      the API and we added some extra functionality.  But, the
+      structure is the same.</p> <center><img alt="Graph Inheritance"
+      src="./img/graph_inheritance.png"></center>
+
+    <h2>Local Random Constituents</h2>
+
+    <p>These are a few random number distributions are provided in the
+      global scope for use in the various models. They're "local" to
+      the IPRL and distinct from the default distributions provided by
+      Swarm.</p> <center><img alt="LocalRandom Constituents"
+      src="./img/LocalRandom_constituents.png"></center>
+
+    <h2>Notes</h2>
+
+    <ul>
+
+      <li>The IPRL is written using a combination of Objective-C and
+        C++.  Hence, the elements of these diagrams do not translate
+        as directly as they would to Java.</li>
+
+      <li>We are in the process of making several extensions to the
+        model, including adding hepatocytes, endothelial cells, more
+        solute types, and a re-architected ExperAgent.  So, these
+        diagrams are already slightly out-of-date.  But, there should
+        be enough here to present the gist.</li>
+
+      <li>The GML (Graph Modeling Language) class is just an
+        abstraction allowing the ArtModel to read the directed graph
+        of sinusoidal segments from a GML file.  It's not clear that
+        GML is the best format for this application; but, it is much
+        more self-descriptive than a simple adjacency matrix and it
+        can include visualization information.  We intend to add
+        visualization in the near future.  In the meantime, we
+        manipulate the graphs with tools like Tulip and GVF.</li>
+
+      <li>We also have a lobule architecture specific parametrized way
+        of specifying graphs called the LobuleSpec.  There doesn't
+        seem to be a good graph generation/evolution tool available
+        out there anywhere.  GVF might be a good base framework in
+        which to fold such a tool.</li>
+
+      <li>At the moment, we are not using HDF5 as anything other than
+        a data format.  But as the data for any given experiment gets
+        more complicated, we expect to use more features from HDF5.
+        Some examples of how the data is expected to get complicated
+        are: multiple in vitro measures (other than outflow profiles),
+        intra- as well as the current inter-subject data, measures
+        taken at multiple resolutions of the in vitro system, etc.
+        It's also possible that the amount of data will grow very
+        large.  These are the issues that justify the use of HDF5, in
+        spite of the fact that we're not putting it to good use at
+        present.</li>
+
+      <li>Because this is a prototype and is really intended to help
+        us develop FURM (which is a <strong>generic</strong> method),
+        the architecture of this model allows all sorts of bad
+        programming practices.  For example, there is alot of
+        crosstalk between the packages and it is sometimes
+        questionable whether certain attributes belong in certain
+        classes.  As FURM is refined, the IPRL will be augmented with
+        more and more automation and mechanisms for automatically
+        making decisions.  This automation will demonstrate the
+        feasibility of FURM and it will likely produce clinically
+        useful in silico models of the liver.  But, the expectation is
+        that the IPRL will be reimplemented after its usefulness is
+        demonstrated.</li>
+
+    </ul>
+
+    <h2>Questions?</h2>
+
+    <p>If you have any questions about the model or the software,
+      contact Professor Hunt via the contact info on the <a
+      href="./index.html" target="_top">Home page</a>.</p>
+
+    <p>We also have a mailing list for the discussion of FURM-related
+    projects, software, design goals, and all the peripheral subjects
+    like tools, techniques, etc.  If you would like to stay informed
+    about FURM, subscribe to this mailing list by following the
+    instructions at: <a
+    href="http://tempusdictum.com/mailman/listinfo/furm">
+    http://tempusdictum.com/mailman/listinfo/furm</a></p>
+
+
+
+
+   <iframe src="menu.html" frameborder="0" width="100%"></iframe>
+   <iframe src="footer.html" frameborder="0" width="100%"></iframe>
+
+</body>
+</html>
