@@ -15,6 +15,12 @@
                text-align: center;
                font-weight: bold;
              }
+             ol li { 
+               margin-bottom: 10px;
+             }
+             ul li { 
+               margin-bottom: 10px;
+             }
           </style>
    </head>
   <body bgcolor="#ffffcc" text="#000000" link="#000099" alink="#cc00cc" vlink="#cc0066">
@@ -107,10 +113,9 @@
         as directly as they would to Java.</li>
 
       <li>We are in the process of making several extensions to the
-        model, including adding hepatocytes, endothelial cells, more
-        solute types, and a re-architected ExperAgent.  So, these
-        diagrams are already slightly out-of-date.  But, there should
-        be enough here to present the gist.</li>
+        model, including adding enzyme induction and elimination.  So,
+        these diagrams are already slightly out-of-date.  But, there
+        should be enough here to present the gist.</li>
 
       <li>The GML (Graph Modeling Language) class is just an
         abstraction allowing the ArtModel to read the directed graph
@@ -122,36 +127,23 @@
         manipulate the graphs with tools like Tulip and GVF.</li>
 
       <li>We also have a lobule architecture specific parametrized way
-        of specifying graphs called the LobuleSpec.  There doesn't
-        seem to be a good graph generation/evolution tool available
-        out there anywhere.  GVF might be a good base framework in
-        which to fold such a tool.</li>
-
-      <li>At the moment, we are not using HDF5 as anything other than
-        a data format.  But as the data for any given experiment gets
-        more complicated, we expect to use more features from HDF5.
-        Some examples of how the data is expected to get complicated
-        are: multiple in vitro measures (other than outflow profiles),
-        intra- as well as the current inter-subject data, measures
-        taken at multiple resolutions of the in vitro system, etc.
-        It's also possible that the amount of data will grow very
-        large.  These are the issues that justify the use of HDF5, in
-        spite of the fact that we're not putting it to good use at
-        present.</li>
-
-      <li>Because this is a prototype and is really intended to help
-        us develop FURM (which is a <strong>generic</strong> method),
-        the architecture of this model allows all sorts of bad
-        programming practices.  For example, there is alot of
-        crosstalk between the packages and it is sometimes
-        questionable whether certain attributes belong in certain
-        classes.  As FURM is refined, the ISL will be augmented with
-        more and more automation and mechanisms for automatically
-        making decisions.  This automation will demonstrate the
-        feasibility of FURM and it will likely produce clinically
-        useful in silico models of the liver.  But, the expectation is
-        that the ISL will be reimplemented after its usefulness is
-        demonstrated.</li>
+        of specifying graphs called the LobuleSpec in the form of a
+        matrix with the following structure:
+        <table border="1">
+          <tr>
+            <td>Zone I nodes</td> <td>Zone II nodes</td> <td>Zone III nodes</td>
+          </tr>
+          <tr>
+            <td>I->I edges</td> <td>I->II edges</td> <td>I->III edges</td>
+          </tr>
+          <tr>
+            <td>II->I edges</td> <td>II->II edges</td> <td>II->III edges</td>
+          </tr>
+          <tr>
+            <td>III->I edges</td> <td>III->II edges</td> <td>III->III edges</td>
+          </tr>
+        </table>
+      </li>
 
     </ul>
 
