@@ -1,0 +1,18 @@
+
+
+all: liver_model
+
+liver_model: liver_model.o Model.h ConvectionDispersion.o ExtendedConvectionDispersion.o
+	g++ -g -o liver_model liver_model.o ConvectionDispersion.o ExtendedConvectionDispersion.o -I.
+
+liver_model.o: liver_model.cc
+	g++ -g -c liver_model.cc -I.
+
+ConvectionDispersion.o: Model.h ConvectionDispersion.cc ConvectionDispersion.h	
+	g++ -g -c ConvectionDispersion.cc -I.
+
+ExtendedConvectionDispersion.o: Model.h ExtendedConvectionDispersion.cc ExtendedConvectionDispersion.h	
+	g++ -g -c ExtendedConvectionDispersion.cc -I.
+
+clean:
+	rm liver_model liver_model.o ConvectionDispersion.o ExtendedConvectionDispersion.o
