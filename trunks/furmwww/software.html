@@ -33,6 +33,42 @@
       software associated with FURM so far is the code for the ISL
       models and the experimental apparatus in which they sit.</p>
 
+    <h2>The In Silico Liver (ISL)</h2>
+
+    <p>The ISL models a mammalian liver undergoing perfusion. It
+    represents a liver as a large, concurrent collection of similar
+    lobules, which are the functional units of the liver.  Components
+    mimic essential hepatic structure and behavior.  Sinusoidal blood
+    flow through the lobules is represented by a directed graph
+    connecting Sinusoidal Segment (SS) nodes.  There are many distinct
+    flow paths from PORTAL VEIN TRACTS (PV) to CV.  A SS is a
+    discretized, tube-like structure comprised of a BLOOD "Core"
+    wrapped by three 2D grids (Spaces A-C), which together simulate a
+    3D structure. SS geometry is specified with two pseudo-random
+    distributions specifying their length and circumference to provide
+    sufficient variety of COMPOUND travel paths.  Compounds are
+    represented using mobile objects that move through the LOBULE and
+    interact with the various components of SSs. A typical COMPOUND
+    maps to many drug molecules. A COMPOUND's behavior is determined
+    by the physicochemical properties of its referent compound, along
+    with the LOBULE and SS features it encounters. Multiple, different
+    COMPOUNDs can percolate through the graph during the same
+    experiment. Objects called CELLs (two types: ENDOTHELIAL CELLs and
+    HEPATOCYTEs) represent an unspecified number of cells. CELLs
+    contain objects and methods, including BINDERs and ENZYMEs, that
+    interact with COMPOUND as it flows through an SS.  ENZYMEs in
+    HEPATOCYTEs contain a METABOLIZE function that destroys COMPOUND
+    and creates METABOLITE, which can then flow out through the SS
+    network or be collected in the BILE DUCT.  The COMPOUND that flows
+    out the CV is counted and used to validate against wet-lab
+    perfusion data collected via a fraction collector.</p>
+
+    <p>More information on the ISL can be
+    found <a href="./isl.html">here</a> as well as in some of
+    our <a href="http://biosystems.ucsf.edu/publications.html">published
+    papers.</a></p>
+
+
     <h2>Downloads</h2>
 
     <ul>
