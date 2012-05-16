@@ -2,6 +2,8 @@
 
 	* glossary.html: New glossary identical to that in bsgwww (aka
 	biosystems.ucsf.edu).
+	* glossary.html: Added co-simulation, bisimulation, congruence,
+	weak bisimulation, and observational congruence.
 
 2012-05-10  glen e. p. ropella  <gepr@tempusdictum.com>
 
