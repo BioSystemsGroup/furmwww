@@ -1,0 +1,14 @@
+*.primary {background-color: rgb(255, 255, 255)}
+*.secondary {background-color: rgb(255, 255, 255)}
+*.tertiary {background-color: rgb(255, 255, 255)}
+*.background {background-color: rgb(255, 255, 255)}
+h1#website-title {font-family: verdana, arial, sans-serif; font-size: 24px; font-weight: bold; color: rgb(88, 121, 147); font-style: normal; text-decoration: none}
+h2#website-slogan {font-family: verdana, arial, sans-serif; font-size: 18px; font-weight: normal; color: rgb(88, 121, 147); font-style: normal; text-decoration: none}
+*#content {font-family: verdana, arial, sans-serif; font-size: 11px; font-weight: normal; color: rgb(85, 85, 85); font-style: normal; text-decoration: none}
+*#content a:link {font-weight: normal; color: rgb(88, 121, 147); font-style: normal; text-decoration: underline}
+*#content a:active {font-weight: normal; color: rgb(88, 121, 147); font-style: normal; text-decoration: underline}
+*#content a:visited {font-weight: normal; color: rgb(88, 121, 147); font-style: normal; text-decoration: underline}
+*#navcontainer div a h3 {font-family: verdana, arial, sans-serif; font-size: 11px; font-weight: bold; color: rgb(114, 114, 114); font-style: normal; text-decoration: none}
+*#navcontainer div a:hover h3 {font-weight: bold; color: rgb(85, 85, 85); font-style: normal; text-decoration: none}
+*#navcontainer div a:hover {font-weight: bold; color: rgb(85, 85, 85); font-style: normal; text-decoration: none}
+*.accent {background: transparent url(../images/0.gif) no-repeat top left}

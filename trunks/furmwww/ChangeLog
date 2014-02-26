@@ -1,0 +1,31 @@
+2012-06-27  gepr  <gepr@tempusdictum.com>
+
+	* index.html: Add anchors to remaining articles.  Remove online-only complexity article.
+
+	* scripts/website.css: Remove stupid underlining of entire paragraphs.
+
+2011-10-24  gepr  <gepr@tempusdictum.com>
+
+	* index.html: Added Tbiomed "grounding" paper.
+
+2010-12-20  glen e. p. ropella  <gepr@tempusdictum.com>
+
+	* index.html: Added DDR paper.
+
+2010-12-03  glen e. p. ropella  <gepr@tempusdictum.com>
+
+	* index.html(<a name="cvsc"/>): Added a new paper.
+	(<a name="tracingI"/>): Fixed date on this paper.  Added a name anchor.
+
+2010-04-20  glen e. p. ropella  <gepr@tempusdictum.com>
+
+	* index.html: Added new Tracing-II paper.
+
+2009-11-05  glen  <gepr@tempusdictum.com>
+
+	* index.html: Added new pharmres paper
+
+2009-01-16  glen  <gepr@tempusdictum.com>
+
+	* index.html: Added google verify meta tag.
+
