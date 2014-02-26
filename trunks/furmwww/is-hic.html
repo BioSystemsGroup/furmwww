@@ -1,0 +1,634 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="robots" content="index, follow"><META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"><META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<script language="javascript">
+//-- These colors are used in design templates
+
+var col_primary="#ffffff";
+var col_secondary="#ffffff";
+var col_tertiary="#ffffff";
+var col_background="#ffffff";
+
+</script>
+
+
+<script language="JavaScript" src="../scripts/ic_globals_published.js"></script><script language="JavaScript" src="scripts/user.js"></script><script language="JavaScript" src="scripts/photoalbum.js"></script>
+<title>Functional Unit Representation Method (FURM)</title>
+<link rel="stylesheet" media="screen" href="scripts/template.css"><link rel="stylesheet" media="all" href="scripts/website.css"><link rel="stylesheet" media="print" href="scripts/print.css"><link rel="stylesheet" media="all" href="scripts/2custom.css"><link rel="stylesheet" media="all" href="scripts/icwebsiteelement.css">
+</head>
+<body class="background" id="wide" onload="processMenus();sizeColumns();">
+<div id="printwrap">
+<div id="nav-left">
+	<div id="headertop" class="primary">
+		<h1 id="website-title"><em>In Silico</em> Hepatic Intrinsic Clearance (IS-HIC)</h1>
+	</div>
+	<div id="inner">
+		<div id="nav-wrapper" class="tertiary">
+			<div id="navcontainer" class="tertiary">
+				<div><a href="index.html" class="tertiary" target="_self"><h3>Home</h3></a></div>
+            <div><a href="about.html" class="tertiary" target="_self"><h3>About</h3></a></div>
+            <div><a href="contact.html" class="tertiary" target="_self"><h3>Contact</h3></a></div>
+            <div><a href="projects.html" class="tertiary" target="_self"><h3>Projects</h3></a></div>
+            <div><a href="documents.html" class="tertiary" target="_self"><h3>Documents</h3></a></div>
+            <div><a href="software.html" class="tertiary" target="_self"><h3>Software</h3></a></div>
+            <div><a href="future.html" class="tertiary" target="_self"><h3>Future</h3></a></div>
+
+			</div>
+			<div id="navconmeasure"></div>
+		</div>
+		<div id="content" class="background">
+			<h2 id="website-slogan" class="secondary">IS-HIC</h2>
+			<div id="sloganmeasure" class="clearer"></div>
+			<table id="content-table">
+        	 	<tr>
+					<td id="content-table-main" align="left" valign="top">
+						<!-- Start content section --><div id="pagecols">
+<div id="column1">
+<div id="colbody1" class="colbody">
+<div class="building_block" id="pgbldblk3">
+<div class="blockbody" id="body_pgbldblk3">
+
+  <p><a href="images/ishic/is-hic-vis-med.gif"><img border="0" src="images/ishic/is-hic-vis-small.gif" width="100" height="100"></a></p>
+
+  <h3>Abstract</h3>
+
+  <p align="left">The functional unit of IS-HIC is the <em>hepatocyte</em>, which is one component of the <a href="isl.html">ISL</a> and bears primary responsibility for metabolizing compounds found in the blood.  The IS-HIC framework measures the extraction or clearance (<i>CL</i>) of compounds (in this case drugs) from the injected solution by the in silico hepatocytes.  Where the ISL models hepatocytes in the context of their spatial and functional roles as a part of a lobule, the IS-HIC arranges the hepatocytes on a 2 dimensional grid as if they were in a petri dish.  There is no blood flow and the hepatocytes simply sit in the solution and act upon compound molecules as they come into contact with them.</p>
+
+  <p class="MsoNormal" align="left">In the <em>ArtModel</em>, hepatocytes are placed randomly in a 2D grid as fixed objects.  Drug (and other) mobile objects are then randomly placed within the space (external to all hepatocytes) based on the initial concentrations of those compounds.  The mobile objects move around pseudo-randomly, while the hepatocytes have the opportunity to take up and metabolize them.</p>
+
+  <p class="MsoNormal" align="left">As the simulation progresses, the number of solute objects decreases as a consequence of metabolism.  At intervals this number is counted, normalized and scaled to represent the concentration of the compound.</p>
+
+  <p class="MsoNormal" align="left">Hepatocytes are very complex cells whose behavior can vary widely depending on their context.  We began the IS-HIC partly to help develop these complex components separately from the ISL and partly as a mechanism to build a model of hepatocyte behavior <i>in vitro</i>.  The aspect of this framework of methodological interest lies primarily in the fact that it is a simpler FURM construction and allows us to demonstrate elements and consequences of FURM that become more difficult with the more complex ISL.  It also provides a test-bed for more advanced additions and developments to FURM like automatic selection and optimization of successful models and variations in SMs.  However, the experimental framework of the IS-HIC is scientifically relevant to the study of hepatocytes and should help posit generative mechanisms at an even lower scale.</p>
+
+  <h3>Methods</h3>
+
+  <ul>
+    <li><a href="#ArtModel">ArtModel</a></li>
+    <li><a href="#RefModel">RefModel</a></li>
+    <li><a href="#DatModel">DataModel</a></li>
+    <li><a href="#SM">Similarity Measure</a></li>
+    <li><a href="#OPT">Model Optimization</a></li>
+    <li><a href="#REFERENCES">References</a></li>
+  </ul>
+
+  <P><a name="ArtModel"></a>ArtModel</P>
+
+  <P>The IS-HIC ArtModel consists of three basic components, <em>solute objects, hepatocytes</em> and a <em>WanderSpace</em>. The solute objects and hepatocyte agents are the exact same as the corresponding components used in the ISL <a href="#REFERENCES">[9]</a>.</P>
+
+  <P align="center"><a name="fig1"></a><a href="images/ishic/ishic-fig1.GIF"><img src="images/ishic/ishic-fig1-sml.gif" width="300" height="161" border="0" alt="Click to enlarge"></a>
+  <p align="center">(a) A single hepatocyte</p>
+  <p align="center"><img src="images/ishic/space.gif" width="300" height="225" border="0"></p>
+  <p align="center">(b) Hepatocytes and solute objects in the 2D space</p>
+  <p align="center">Fig1</p>
+
+  <p><em>Solute objects</em>: solute objects are the mobile objects representing a group of molecules of the chemical compound (the test drug) as they move around in the reaction mixture. These in silico objects can be parameterized to make their behavior similar to that of a drug <em>in vitro</em>.  The more relevant parameters are as follows.  SoluteBindingProb: The probability that a specific type of drug object will bind to a Binder within a hepatocyte.  SoluteBindingCycles: The number of steps that a drug object remain attached to a Binder; MembraneCrossing: indicates whether a compound can or cannot enter hepatocytes.A solute object is destroyed once it is “metabolized.”Metabolites are not currently tracked.</p>
+
+  <P><em>Binder:</em> Objects within hepatocyte agents that can both bind and metabolize compounds.Each Binder represents a fraction of all subcellular components that can bind or sequester a drug object, and includes a fraction of all metabolizing enzymes.</p>
+
+  <P><em>Hepatocytes</em>: These objects are the agents representing the isolated hepatocytes suspended in the <em>in vitro</em> cell culture media.  They are capable of taking in, binding and metabolizing drug objects.The parameters are: BindersPerCellMin, BindersPerCellMax: Minimum and maximum binders per cell, respectively.  MetabolizationProb: The probability that the cell metabolizes an attached solute object at the end of its binding period.</P>
+
+  <p><em>WanderSpace</em> is a fine-grained space, representing the in vitro cell culture, in which solute objects and hepatocytes interact with each other.  SpaceWidth, SpaceLength: Width and length of WanderSpace.  HepDensity: The density of hepatocytes in the space.  TotalSoluteMass: The total compound mass initially added to WanderSpace.</p>
+
+  <p>Functioning of the IS-HIC ArtModel: First, hepatocyte agents are placed randomly in the WanderSpace as fixed objects.  Drug (and other) mobile objects are then randomly placed within the space (external to all hepatocytes) based on an initial concentration (see Figure 1).  The mobile objects move randomly, while the hepatocytes have the opportunity to “take up” and then metabolize nearby solute objects.</p>
+
+  <p align="center"><a name="fig2"></a><a href="images/ishic/ishic-fig2.GIF"><img src="images/ishic/ishic-fig2-sml.gif" width="250" height="265" border="0" alt="Click to enlarge"></a></p>
+  <P align="center">Fig 2</P>
+
+
+  <H3><a name="RefModel"></a>RefModel</H3>
+
+  <P>The metabolic rate decreases in proportion to the local drug concentration as given by equation (1), where <em>k</em> is a first order rate constant <a href="#REFERENCES">[12]</a></P>
+
+  <P align="center">dC/dt = -kC(t) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>(1)</em></P>
+
+  <p>Intrinsic clearance is a measure of enzyme activity, and is independent of physiological factors such as the liver blood flow or drug binding in the blood. In vitro, the intrinsic clearance of a drug is commonly expressed by equation 2, where Cs is the concentration of the unbound drug at the enzyme site<a href="#REFERENCES">[12]</a>.</P>
+
+  <P align="center"><em>Rate of metabolism:</em> V = CL<SUB>int</SUB> C<SUB>s &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>(2)</em></p>
+
+  <P>Rate of metabolism is generally defined by the Michaelis-Mention enzyme kinetics relationship. When the drug concentration is much smaller than <em>K<SUB>m</SUB></em> (the Michaelis-Mention constant), CL<sub>int</sub> becomes:</P>
+
+  <P align="center"><em>CL<SUB>int</SUB> = V/C<SUB>s</SUB></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>(3)</em></p>
+
+  <p>What we need for our mathematical reference model, is an equation that describes the concentration of the unchanged drug as a function of time. Researchers use the following equation to express the concentration of unchanged drug for in vitro experiments, when keeping the initial drug concentration much smaller than K<sub>m</sub>:</p>
+
+  <p align="center"><em>dC/dt=-CL*D*C(t)</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>(4)</em></p>
+
+  <p>where C(t) is the concentration, CL the in vitro clearance of the drug and D the cell density.</p>
+
+  <p>By solving differential equation (4) the amount of drug remaining after incubation time T is expressed as follows:</p>
+
+  <p align="center"><em>C(T)=C(0)*exp(-CL*D*T)</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <em>(5)</em></p>
+
+  <p>The basic equations explained above cannot be applied to all drugs, but they are applicable to the drugs and conditions selected for this study, and so we use equation 5 to express <em>in vitro</em> clearance and to be the reference model for IS-HIC.</p>
+
+  <h3><a name="DatModel">DatModel</a></h3>
+
+  <p>The DatModel represents the real biological system. It contains the data obtained from in vitro experiments, and is used to validate the in silico model (ArtModel).  The validation process involves measuring the output of the in silico model and comparing it with the data provided by DatModel. In this work the data was obtained from Fig.  2 of [11], which depicts the time course for nine unchanged compounds in cell culture media containing freshly isolated rat hepatocytes different compounds. The data points were carefully obtained from the graphs using computer design tools. The DatModel interpolates the data points using a linear interpolation method to estimate the drug concentration at each time step of the simulation.</p>
+
+  <h3><a name="SM">The Similarity Measure</a></h3>
+
+  <P>After each in silico experiment a <em>similarity measure</em> algorithm compares the output of that experiment with the data provided by DatModel and assigns a score to the output based on the degree of their similarity. Several similarity measure algorithms are surveyed in <a href="#REFERENCES">[13]</a>. The similarity measure used in this work was the measure calculated by the "global standard deviation" method <a href="#REFERENCES">[13]</a>, with a wider envelope:
+
+  <p align="center"><em>upper<SUB>i</SUB> = m<SUB>i</SUB> (1 + sd) + 10, lower<SUB>i</SUB> = m<SUB>i</SUB> (1 - sd) - 10</em>,</p>
+
+  <p>where <em>m<SUB>i</SUB></em> and <em>sd</em> are the nominal mean and standard deviation of the time series (for additional detail see <a href="#REFERENCES">[13]</a>).  This score is calculated by counting the number of observations of the candidate time series that fall within the envelope and dividing that by the total observations in the series <a href="#REFERENCES">[13]</a>, as a result <em>similatiry_score</em> is in [0,1].</P>
+
+  <h3><a name="OPT">Model Optimization</a></h3>
+
+  <p>By model optimization we mean finding a set of model parameter values for ArtModel which produce the maximum possible similarity score. Several simulation optimization methods are surveyed in <a href="#REFERENCES">[17]</a>, including the Nelder and Mean simplex search method.</P>
+
+  <P>The Nelder and Mead algorithm, introduced in <a href="#REFERENCES">[18]</a> for the first time, has been used widely to solve parameter estimation problems for almost 40 years.  Despite its age it is still the method of choice for many practitioners in the fields of statistics, engineering and the physical and medical sciences because it is straightforward to code and easy to use. Particularly, it’s been used widely by researchers for simulation optimization <a href="#REFERENCES">[18-22]</a>. It belongs to a class of methods which do not require derivatives and which are often claimed to be robust for problems with discontinuities or where function values are noisy.  This property makes it a good candidate for optimizing our stochastic in silico simulation.</P>
+
+  <P>There are several different versions and extensions of this optimization algorithm.  We used the one described in <a href="#REFERENCES">[16]</a> to optimize our parameters.</P>
+
+  <P><a href="#fig3">Figure 3</a> shows the simplex algorithm employed in this paper. q<sub>best</sub>, q<sub>worst</sub> and q<sub>next-worst</sub> are the best, worst and next worst vertex of the simplex. There are four basic operations used in this algorithm: reflect, contract, expand and shrink each of which is depicted for a 2D simplex in <a href="#fig4">Figure 4</a>. The general heuristic in this search method is to move away from the worst point toward the best.</P>
+
+  <p align="center"><a name="fig3"></a><a href="images/ishic/ishic-fig3.gif"><img src="images/ishic/ishic-fig3-sml.gif" width="350" height="333" border="0" alt="Click to enlarge"></p>
+  <p align="center">Fig 3</p>
+  <p align="center"><a name="fig4"></a><img src="images/ishic/ishic-fig4-sml.gif" width="400" height="162" border="0" alt="Click to enlarge"></p>
+  <p align="center">Fig 4</p>
+
+
+
+  <h3>Results</h3>
+
+
+<p>8 chemicals from <a href="#[11]">[11]</a> were chosen as our test drugs to be cleared in silico by simulated rat hepatocytes.  In vitro, each compound (at a concentration of 1000 µM) had been incubated for various time periods at 37°C with freshly isolated rat hepatocytes. The cell density in the reaction mixture is reported 0.5´106 (cells/ml) for FK1052 and Diltiazem,  and 1´106 (cells/ml) for Acetaminophen.</p>
+
+<p>Calculation of parameter. Because the Hepatocytes and the test drug are in the same volume of mixture: P1/P2=C1/C2</p>
+
+<p>For example consider FK1052: P1/P2=1000(pmol/ml)/0.5e6(cells/ml)=1000(fmol)/500(cells)</p>
+
+<p>To encompass 500 cells we need 0.001ml of the mixture (V = cells/cell-density = 500/.5´106 = 0.001ml). Assuming each spot in the WanderSpace corresponds to 350´10-9 ml of the mixture, for 0.001ml we will need 2857 spots. So we chose the WanderSpace to be 53 by 54 (=2862). Other parameters were chosen as follows: HepDensity = 500/2857 = 0.175, TotalSoluteMass = 1000 fmol.</p>
+
+<p>Other parameters (SoluteBindingProb,SoluteBinding- Cycles, BindersPerCe-llMin, BindersPerCellMax and MetabolizationProb) were iteratively searched to optimize the output –an acceptable similarity score was attained. We used the Nedler and Mead simplex method <a href="#[16]">[16]</a> to optimize the parameters. This method has been frequently used for optimization of stochastic simulation models, where one tries to estimate the model parameters that optimize some specific output of the simulation model <a href="#[16]">[16]</a>. The parameter values are summarized in <a href="#Table1">Table 1.</a></p>
+
+<p><a href="#fig5">Figure 5</a> shows the output of the IS-HIC ArtModel using above parameterization along with in vitro clearance profiles of 8 drugs.  The simulation results are in a good agreement with both the mathematical model and the in vitro data.</p>
+
+
+
+  <p align="center"><a name="Table1">Table 1</a>: The parameter values</p>
+  <TABLE border="1">
+    <TBODY>
+      <TR>
+        <TD vAlign=top width=151 colSpan=2><P>Drugs<BR>Parameters</P></TD>
+        <TD width=64><P align="center">Diazepam</P></TD>
+        <TD width=60><P align="center">FK079</P></TD>
+        <TD width=60><P align="center">FK480</P></TD>
+        <TD width=74><P align="center">Quinotolast</P></TD>
+        <TD width=71><P align="center">Zidovudine</P></TD>
+        <TD width=61><P align="center">Diltiazem</P></TD>
+        <TD noWrap width=60><P align="center">FK1052</P></TD>
+        <TD noWrap width=61><P align="center">Acetaminophen</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign="top" noWrap width=28 rowSpan=9><P align="center"><em>In Silico</em></P></TD>
+        <TD vAlign=top width=123><P align="center">SoluteBindingProb</P></TD>
+        <TD vAlign=top width=64><P align="right">0.010715</P></TD>
+        <TD vAlign=top width=60><P align="right">0.001439</P></TD>
+        <TD vAlign=top width=60><P align="right">0.006665</P></TD>
+        <TD vAlign=top width=74><P align="right">0.002147</P></TD>
+        <TD vAlign=top width=71><P align="right">0.00378 </P></TD>
+        <TD vAlign=top width=61><P align="right">0.14 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">0.026236</P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">0.0028</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P align="center"> SoluteBindingCycles</P></TD>
+        <TD vAlign=top width=64><P align="right">2 </P></TD>
+        <TD vAlign=top width=60><P align="right">3 </P></TD>
+        <TD vAlign=top width=60><P align="right">1 </P></TD>
+        <TD vAlign=top width=74><P align="right">3 </P></TD>
+        <TD vAlign=top width=71><P align="right">5 </P></TD>
+        <TD vAlign=top width=61><P align="right">1 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">2 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">3 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>MetabolizationProb</P></TD>
+        <TD vAlign=top width=64><P align="right">0.5 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.5 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.5 </P></TD>
+        <TD vAlign=top width=74><P align="right">0.5 </P></TD>
+        <TD vAlign=top width=71><P align="right">0.5 </P></TD>
+        <TD vAlign=top width=61><P align="right">0.5 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">0.5 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">0.5 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>HepDensity</P></TD>
+        <TD vAlign=top width=64><P align="right">0.175 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.175 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.175 </P></TD>
+        <TD vAlign=top width=74><P align="right">0.175 </P></TD>
+        <TD vAlign=top width=71><P align="right">0.7 </P></TD>
+        <TD vAlign=top width=61><P align="right">0.175 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">0.175 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">0.35 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>BindersPerCellMin</P></TD>
+        <TD vAlign=top width=64><P align="right">5 </P></TD>
+        <TD vAlign=top width=60><P align="right">5 </P></TD>
+        <TD vAlign=top width=60><P align="right">5 </P></TD>
+        <TD vAlign=top width=74><P align="right">5 </P></TD>
+        <TD vAlign=top width=71><P align="right">5 </P></TD>
+        <TD vAlign=top width=61><P align="right">5 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">5 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">5 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><p>BindersPerCellMax</P></TD>
+        <TD vAlign=top width=64><P align="right">10 </P></TD>
+        <TD vAlign=top width=60><P align="right">10 </P></TD>
+        <TD vAlign=top width=60><P align="right">10 </P></TD>
+        <TD vAlign=top width=74><P align="right">10 </P></TD>
+        <TD vAlign=top width=71><P align="right">10 </P></TD>
+        <TD vAlign=top width=61><P align="right">10 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">10 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">10 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>TotalSoluteMass</P></TD>
+        <TD vAlign=top width=64><P align="right">1000 </P></TD>
+        <TD vAlign=top width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top width=74><P align="right">1000 </P></TD>
+        <TD vAlign=top width=71><P align="right">1000 </P></TD>
+        <TD vAlign=top width=61><P align="right">1000 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">1000 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>WanderSpace</P></TD>
+        <TD vAlign=top width=64><P align="right">53*54 </P></TD>
+        <TD vAlign=top width=60><P align="right">53*54 </P></TD>
+        <TD vAlign=top width=60><P align="right">53*54 </P></TD>
+        <TD vAlign=top width=74><P align="right">53*54 </P></TD>
+        <TD vAlign=top width=71><P align="right">58*58 </P></TD>
+        <TD vAlign=top width=61><P align="right">53*54 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">53*54</P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">53*54</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>Milliliter per spot</P></TD>
+        <TD vAlign=top width=64><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top width=60><P align="right">4.37E-08<strong>*</strong></P></TD>
+        <TD vAlign=top width=60><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top width=74><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top width=71><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top width=61><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">3.50E-07 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">3.50E-07</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top noWrap width=28 rowSpan=4><P><em>In Vitro</em></P></TD>
+        <TD vAlign=top width=123><P>Cell Density (cell/ml)</P></TD>
+        <TD vAlign=top width=64><P align="right">5.00E+05 </P></TD>
+        <TD vAlign=top width=60><P align="right">4.00E+06 </P></TD>
+        <TD vAlign=top width=60><P align="right">5.00E+05 </P></TD>
+        <TD vAlign=top width=74><P align="right">5.00E+05 </P></TD>
+        <TD vAlign=top width=71><P align="right">2.00E+06 </P></TD>
+        <TD vAlign=top width=61><P align="right">5.00E+05 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">5.00E+05 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">1.00E+06</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><p>Temp (&deg;C)</P></TD>
+        <TD vAlign=top width=64><P align="right">37 </P></TD>
+        <TD vAlign=top width=60><P align="right">37 </P></TD>
+        <TD vAlign=top width=60><P align="right">37 </P></TD>
+        <TD vAlign=top width=74><P align="right">37 </P></TD>
+        <TD vAlign=top width=71><P align="right">37 </P></TD>
+        <TD vAlign=top width=61><P align="right">37 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">37 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">37 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><p>pH</P></TD>
+        <TD vAlign=top width=64><P align="right">7.2 </P></TD>
+        <TD vAlign=top width=60><P align="right">7.2 </P></TD>
+        <TD vAlign=top width=60><P align="right">7.2 </P></TD>
+        <TD vAlign=top width=74><P align="right">7.2 </P></TD>
+        <TD vAlign=top width=71><P align="right">7.2 </P></TD>
+        <TD vAlign=top width=61><P align="right">7.2 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">7.2 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">7.2 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><p>Initial Concentration (mM)</P></TD>
+        <TD vAlign=top width=64><P align="right">1000 </P></TD>
+        <TD vAlign=top width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top width=74><P align="right">1000 </P></TD>
+        <TD vAlign=top width=71><P align="right">1000 </P></TD>
+        <TD vAlign=top width=61><P align="right">1000 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">1000 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">1000 </P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top noWrap width=28 rowSpan=2><P>Math</P></TD>
+        <TD vAlign=top width=123><P>C(0)</P></TD>
+        <TD vAlign=top width=64><P align="right">995.6 </P></TD>
+        <TD vAlign=top width=60><P align="right">977.4 </P></TD>
+        <TD vAlign=top width=60><P align="right">997.5 </P></TD>
+        <TD vAlign=top width=74><P align="right">973.7 </P></TD>
+        <TD vAlign=top width=71><P align="right">970.6 </P></TD>
+        <TD vAlign=top width=61><P align="right">981.9 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">996.7 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">976.4</P></TD>
+      </TR>
+      <TR>
+        <TD vAlign=top width=123><P>k</P></TD>
+        <TD vAlign=top width=64><P align="right">0.03588 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.00373 </P></TD>
+        <TD vAlign=top width=60><P align="right">0.02291 </P></TD>
+        <TD vAlign=top width=74><P align="right">0.006358 </P></TD>
+        <TD vAlign=top width=71><P align="right">0.006287 </P></TD>
+        <TD vAlign=top width=61><P align="right">0.3449 </P></TD>
+        <TD vAlign=top noWrap width=60><P align="right">0.06892 </P></TD>
+        <TD vAlign=top noWrap width=61><P align="right">0.01558</P></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+
+
+<table>
+  <tr>
+    <td><a href="images/ishic/Acetominophen.emf"><img src="images/ishic/Acetominophen-sml.gif" width="300" height="225" border="0"></a></td>
+    <td><a href="images/ishic/Diazepam.emf"><img src="images/ishic/Diazepam-sml.gif" width="300" height="225" border="0"></a></td>
+  </tr>
+  <tr>
+    <td align="center">Acetaminophen</td>
+    <td align="center">Diazepam</td>
+  </tr>
+  <tr>
+    <td><a href="images/ishic/Diltiazem.emf"><img src="images/ishic/Diltiazem-sml.gif" width="300" height="225" border="0"></a></td>
+    <td><a href="images/ishic/FK079.emf"><img src="images/ishic/FK079-sml.gif" width="300" height="225" border="0"></a></td>
+  </tr>
+  <tr>
+    <td align="center">Diltiazem</td>
+    <td align="center">FK079</td>
+  </tr>
+  <tr>
+    <td><a href="images/ishic/FK480.emf"><img src="images/ishic/FK480-sml.gif" width="300" height="225" border="0"></a></td>
+    <td><a href="images/ishic/FK1052.emf"><img src="images/ishic/FK1052-sml.gif" width="300" height="225" border="0"></a></td>
+  </tr>
+  <tr>
+    <td align="center">FK480</TD>
+    <td align="center">FK1052</td>
+  </tr>
+  <tr>
+    <td><a href="images/ishic/Quinotolast.emf"><img src="images/ishic/Quinotolast-sml.gif" width="300" height="225" border="0"></a></td>
+    <td><a href="images/ishic/Zidovudine.emf"><img src="images/ishic/Zidovudine-sml.gif" width="300" height="225" border="0"></a></td>
+  </tr>
+  <tr>
+    <td align="center">Quinotolast</td>
+    <td align="center">Zidovudine</td>
+  </tr>
+  <tr><td colspan="0" align="center">Figure 5</td></tr>
+</table>
+
+
+<h1 style='margin-left:0in;text-indent:0in;mso-list:none;tab-stops:.5in'><font size="4"><a name="REFERENCES"></a></font><font size="5">REFERENCES</font></h1>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[1]
+Hunt, C.A., G.E.P. Ropella, M.S. Roberts,
+and L. Yan, 2004, “Biomimetic In Silico Devices. Computational Methods in
+Systems Biology,” Second International Workshop, CMSB 2004 (Paris, France,
+May 26-28, 2004) Proceedings.<span style='mso-spacerun:yes'>&nbsp; </span>Lecture
+Notes in Bioinformatics, Springer (in press); available at
+                                    <a href="http://biosystems.ucsf.edu/Researc/RecentPapers/HuntCMSB04b.pdf">http://biosystems.ucsf.edu/Researc/RecentPapers/HuntCMSB04b.pdf</a>.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[2]
+Leahy, D.E., 2004, “Drug Discovery Information Integration: Virtual Humans for
+Pharmacokinetics,” DDT: Biosilico. 2, no. 2: 78-84.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[3]
+Lipscomb, J.C., M. Meek, K. Krishnan, G.L. Kedderis, H. Clewell, and L. Haber,
+2004, “Incorporation of Pharmacokinetic and Pharmacodynamic Data Into Risk
+Assessments,” Toxicology Mechanisms and Methods, 14, no. 3: 145-158.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[4]
+Gunaratna, C., 2001, “Drug Metabolism and Pharmacokinetics in Drug Discovery: A
+Primer for Bioanalytical Chemists, Part II,” Current Separations, 19, no. 3
+(www.currentseparations.com/issues/19-3/19-3e.pdf. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[5]
+Venkatakrishnan, K., L.L. von Moltke, and D.J. Greenblatt, 2001, “Human Drug
+Metabolism and the Cytochromes P450: Application and Relevance of In Vitro
+Models,” Journal of Clinical Pharmacology, 41, no. 11: 1149-1179.</span></p>
+
+<p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
+text-autospace:none'><span style='font-size:9.0pt'>[6] Takahashi, K., K. Kaizu,
+B. Hu, and M. Tomita, 2004, “A Multi-algorithm, Multi-timescale Method for Cell
+Simulation,” Bioinformatics, 20, no. 4: 538-46. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[7]
+Meng,T.C., S. Somani, and P. Dhar, 2004,
+“Modeling and Simulation of Biological Systems with Stochasticity,” In Silico
+Biology, 4, 0024.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[8]
+S. Eklins, 2003, “In Silico Approaches to Predicting Drug Metabolism,
+Toxicology and Beyond,” Biochemical Society Transactions, 31,(Pt 3): 611-4.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[9]
+Ropella, G.E.P., and C.A. Hunt, 2003, “Prerequisites for Effective
+Experimentation in Computational Biology,” 25th Annual Conference of the IEEE
+Engineering in Medicine and Biology Society (Cancun,
+September 17-21, 2003); available at
+                                    <a href="http://128.218.188.153:8080/~gepr/furm/docs/EMBC03Paper1.pdf">http://128.218.188.153:8080/~gepr/furm/docs/EMBC03Paper1.pdf</a>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
+text-autospace:none'><span style='font-size:9.0pt'>[10] </span><span
+class=firstname><span lang=EN style='font-size:9.0pt;mso-ansi-language:EN'>Daniels</span></span><span
+class=surname><span lang=EN style='font-size:9.0pt;mso-ansi-language:EN'>, </span></span><span
+class=firstname><span lang=EN style='font-size:9.0pt;mso-ansi-language:EN'>M.,
+1999, </span></span><span class=surname><span lang=EN style='font-size:9.0pt;
+mso-ansi-language:EN'>“</span></span><span lang=EN style='font-size:9.0pt;
+mso-ansi-language:EN'>Integrating Simulation Technologies with Swarm,” Agent
+Simulation: Applications, Models and Tools Conference (University of Chicago,
+October 1999); available at <a href="http://www.santafe.edu/~mgd/anl/anlchicago.html">http://www.santafe.edu/~mgd/anl/anlchicago.html</a> 
+                                    .<a
+style='mso-footnote-id:ftn1' href="#_ftn1" name="_ftnref1" title=""><span
+class=MsoFootnoteReference><span style='mso-special-character:footnote'><span
+class=MsoFootnoteReference><span lang=EN style='font-size:9.0pt;font-family:
+"Times New Roman";mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'>[1]</span></span></span></span></a></span></p>
+
+<p><a name="[11]">[11]</a> Naritomi,Y., S. Terashita, A. Kagayama, and Y.  Sugiyama, 2003, “Utility of Hepatocytes in Predicting Drug Metabolism: Comparison of Hepatic Intrinsic Clearance in Rats and Humans In Vivo and In Vitro,” Drug Metabolism and Disposition, 31, no. 5: 580-588.</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[12]
+Shibata, Y., H. Takahashi, and Y. Ishii, 2000, “A Convenient In Vitro Screening
+Method for Predicting In Vivo Drug Metabolic Clearance Using Isolated
+Hepatocytes Suspended in Serum,” Drug Metabolism and Disposition, 28, no. 12:
+1518-1523.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[13]
+Ropella, G.E.P., D.A. Nag, and C.A. Hunt, 2000, “Similarity Measures for
+Automated Comparison of In Silico and In Vitro Experimental Results,” ibid;
+available at <a href="http://128.218.188.153:8080/~gepr/furm/docs/EMBC03Paper2.pdf">http://128.218.188.153:8080/~gepr/furm/docs/EMBC03Paper2.pdf</a> 
+                                    .</span></p>
+
+<p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
+text-autospace:none'><span style='font-size:9.0pt'>[14] Treijtel, N., A.
+Barendregt, A.P. Freidig, B.J. Blaauboer, and J.C.H. van Eijkeren, 2004,
+“Modeling the In Vitro Intrinsic Clearance of the Slowly Metabolized Compound
+Tolbutamide Determined in Sandwich-Cultured Rat Hepatocytes,” Drug Metabolism
+and Disposition, 32, no. 8: 884-891.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:9.0pt'>[15]
+Haenen, B., C. Rompelberg, K. Van Twillert, M. Hamzink, J. Dormans, and J. Van
+Eijkeren, 2002, “Utility of Rat Liver Slices to Estimate Hepatic Clearance for
+Application in Physiologically Based Pharmacokinetic Modeling: A Study With
+Tolbutamide, a Compound with Low Extraction Efficiency,” Drug Metabolism and
+Disposition, 30, no. 3: 307-313.</span></p>
+
+<p><a name="[16]">[16]</a>H.G. Neddermeijer &amp; G.J. van Oortmarssen &amp; N. Piersma &amp; R. Dekker, 2000, &quot;Adaptive extensions of the Nelder and Mead Simplex Method for optimization of stochastic simulation models,&quot; Econometric Institute Report 199, Erasmus University Rotterdam, Econometric Institute.</p>
+
+<div style='mso-element:footnote-list'><div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFootnoteText style='line-height:9.0pt;mso-line-height-rule:exactly'>&nbsp;</p>
+
+</div>
+
+</div>
+
+</TD></TR></TBODY></TABLE></CENTER></DIV></td>
+
+
+
+
+</div>
+</div>
+<div class="building_block" id="pgbldblk27">
+<div class="blockbody" id="body_pgbldblk27">
+<table border="0" name="" width="100%" cellpadding="5" cellspacing="0">
+
+
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="column2">
+<div id="colbody2" class="colbody"></div>
+</div>
+<div id="column3">
+<div id="colbody3" class="colbody"></div>
+</div>
+</div><div id="measurescroll" style="clear:both;"></div><table border="0" width="100%" cellpadding="0" cellspacing="0" id="other_footer">
+<tr>
+<td align="left" valign="middle">Copyright 2008 Tempus Dictum, Inc.
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle"></td>
+</tr>
+</table>
+<!-- End content section -->
+					</td>
+					<td id="content-table-sub" align="left" valign="top" class="accent">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<div id="clearmeasure" class="clearer"></div>
+	</div>
+	<div id="footer" class="primary"></div>
+</div>
+</div>
+<div class="clearer"></div>
+
+<script language="javaScript">
+// Column Height Script
+function pngHeight() {
+	var navagt=navigator.userAgent.toLowerCase();
+var msie5=0;
+if ((navagt.indexOf('msie 5.5')==-1)&&(navagt.indexOf('msie 5')!=-1)) msie5=1;
+var msie55=0;
+if (navagt.indexOf('msie 5.5')!=-1) msie55=1;
+var safari=0;
+if (navagt.indexOf('safari')!=-1) safari=1;
+var msie6=0;
+if (navagt.indexOf("msie 6.")!=-1) msie6=1;
+var msie_pre7=0;
+if((msie5)||(msie55)||(msie6)) {
+	msie_pre7=1;
+}
+
+	if (msie_pre7) {
+		document.getElementById('footer').style.zIndex=0;
+		document.getElementById('inner').style.zIndex=1000;
+	} else {
+		document.getElementById('footer').style.zIndex=0;
+		document.getElementById('inner').style.zIndex=1000;
+	}
+	var pngColHeight1=document.getElementById('column1').clientHeight;
+	var pngColHeight2=document.getElementById('column2').clientHeight;
+	var pngColHeight3=document.getElementById('column3').clientHeight;
+	var othFootHeight=40;
+	if(document.getElementById('other_footer')) {
+	othFootHeight=document.getElementById('other_footer').clientHeight;
+	}
+	var pngFeatImgHt=document.getElementById('content-table-sub').clientHeight;
+	var pngSloganHeight = document.getElementById('sloganmeasure').offsetTop;
+
+	pngColHeight=pngColHeight1;
+	
+	if(pngColHeight<pngColHeight2) pngColHeight=pngColHeight2;
+	if(pngColHeight<pngColHeight3) pngColHeight=pngColHeight3;
+	
+	pngColRemainder=(pngColHeight1 + pngColHeight2 + pngColHeight2) - pngColHeight;
+	
+	if((pngColHeight + othFootHeight)<418) {
+		pngColHeight=(418 - othFootHeight);
+	}	
+		
+	var navConHeight=document.getElementById('navconmeasure').offsetTop;
+		
+	if (document.getElementById('nav-top')) {
+		document.getElementById('content').style.height=(pngColHeight + pngSloganHeight + othFootHeight + 3) + "px";
+	
+	} else if (document.getElementById('nav-left') || document.getElementById('nav-right')) {
+	pngFinalHt=(pngColHeight + pngSloganHeight + othFootHeight);
+	
+	if(navConHeight>pngFinalHt) pngFinalHt=navConHeight;
+	
+	if (document.all) {
+		if (msie_pre7) {
+			document.getElementById('content').style.height=(pngFinalHt);
+			document.getElementById('inner').style.height=(pngFinalHt);
+			document.getElementById('nav-wrapper').style.height=(pngFinalHt + 7);
+		} else {
+			document.getElementById('content').style.height=(pngFinalHt);
+			document.getElementById('inner').style.height=(pngFinalHt);
+			document.getElementById('nav-wrapper').style.height=(pngFinalHt);
+		}
+		
+	} else {
+		document.getElementById('content').style.height=(pngFinalHt + 4) + "px";
+		document.getElementById('inner').style.height=(pngFinalHt + 4) + "px";
+		document.getElementById('nav-wrapper').style.height=(pngFinalHt + 4) + "px";
+	}
+	
+	}
+	if (document.getElementById('nav-top') ) {
+			pngYOffset = 11; 
+	}
+	if (document.getElementById('nav-left') ) {
+			pngYOffset = 2; 
+	}
+	if (document.getElementById('nav-right') ) {
+			pngYOffset = 2; 
+	}
+}
+var oldhandler = window.onload;
+window.onload = (typeof oldhandler == "function")
+    ? function() { oldhandler(); pngHeight(); } : pngHeight; </script>
+
+</div>
+</body>
+</html>
