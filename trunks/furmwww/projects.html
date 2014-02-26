@@ -39,7 +39,7 @@ var col_background="#ffffff";
 			<div id="navconmeasure"></div>
 		</div>
 		<div id="content" class="background">
-			<h2 id="website-slogan" class="secondary">Overview</h2>
+			<h2 id="website-slogan" class="secondary">Projects</h2>
 			<div id="sloganmeasure" class="clearer"></div>
 			<table id="content-table">
         	 	<tr>
@@ -49,62 +49,87 @@ var col_background="#ffffff";
 <div id="colbody1" class="colbody">
 <div class="building_block" id="pgbldblk3">
 <div class="blockbody" id="body_pgbldblk3">
-<table border="0" name="" width="100%" cellpadding="5" cellspacing="0">
-<tr align="" valign="">
-<td colspan="1" rowspan="1" width="100%" align="" valign="top">
-  <p>FURM consists of 4 fundamental guidelines:
-    <ol type="1">
-      <li>Standardize interfaces to multi-paradigm, multi-mode, and
-        cross-trophic models, </li>
-      <li>use discrete interactions, </li>
-      <li>design for an extended life cycle, and </li>
-      <li>define observables that will submit to a similarity measure</li>
-    </ol>
-  </p>
 
-  <p>These four fundamental guidelines flow down into the following more concrete behaviors (principles) that constitute the modeling of functional units.</p>
 
-  <ul>
-    <li><h3>Iterative Modeling</h3>
-      <p>Every model should be under continual evolution.  There is no optimal (finished) model.</p>
-    </li>
 
-    <li><h3>Model Comparison/Contrast</h3>
-      <p>Isolated models are nonsense.  They only make sense in relation, comparison, and contrast to other models.</p>
-    </li>
 
-    <li><h3>V&V</h3>
-      <p>Every component of a model should be open to validation (data permitting) based on clearly defined measures.  Verification should be limited to the examination of networks of validatable components.</p>
-    </li>
+    <table width="100%" border="1">
+      <tr><td colspan="0"><h3>Projects being developed under the FURM guidelines</h3></td></tr>
+      <tr>
+          <td><a href="./isl.html"><font size="+1">ISL</font></a></td>
+          <td><p>In Silico (Isolated Perfused Rat) Liver - an ISL experimental apparatus implemented in software.
+        </tr>
+      <tr>
+          <td><a href="./is-hic.html"><font size="+1">IS-HIC</font></a></td>
+          <td><p>In Silico Hepatic Intrinsic Clearance
+        </tr>
+      <tr>
+        <td>EI3</td>
+        <td>We are working on our third hypothetical mechanism for
+        hepatic enzyme induction.  Our first round was
+        described <a href="http://dx.doi.org/10.1002/cplx.20253">here</a>.
+        And our second round (EI2) is described in our
+        <a href="http://biosystems.ucsf.edu/publications/Ropella_ADS2012.pdf">ADS'12
+        paper</a></td>.
+      </tr>
+      <tr>
+        <td>EC2</td>
+        <td>We migrated our analogs to execute in Amazon's EC2 when we
+        outgrew our 8 node OSCAR cluster.  We describe our cross-model
+        validation from the cluster to the cloud in
+        our <a href="http://www.biomedcentral.com/1752-0509/4/168">BMC
+        Systems Biology paper</a></td>.
+      </tr>
+      <tr>
+        <td>PtII-Bio</td>
+        <td><a href="http://ptolemy.eecs.berkeley.edu/ptolemyII/">Ptolemy
+        II</a> is a co-simulation environment designed for simulating
+        systems of heterogeneous components.  It is mostly
+        designed for the simulation of engineered systems, both
+        hardware and software.  It's actor-oriented approach
+        facilitates the graphical construction, quasi-autonomy, and
+        integration of components based on heterogeneous models of
+        computation
+        (so-called <a href="http://ptolemy.eecs.berkeley.edu/ptolemyII/ptIIlatest/ptII/doc/codeDoc/index.html">Directors</a>)
+        as well as the semi-automated model-checking of composed
+        models.  Such facilities turn out to be useful for biological
+        modeling and we have begun designing more biologically
+        relevant Ptolemy II models and actors.</td>
+      </tr>
+      <tr>
+        <td>APAP Hepatotoxicity</td>
+        <td>Acetominophen (APAP) hepatotoxicity in mice is a reference
+        model for drug induced liver injury in humans.  Because APAP
+        toxicity involves many positive and negative feedback loops
+        across many scales and aspects, it is not clear which of those
+        networks are essential players in the toxicity cascade and
+        which are mere correlations.  This project is a collaborative
+        effort between the <a href="http://biosystems.ucsf.edu">BioSystems Group</a> at UCSF, <a href="http://www.surgery.usc.edu/divisions/hep/cv-kaplowitzneil.html">Neil
+        Kaplowitz</a>, and <a href="http://pibbs.usc.edu/faculty/profile/?fid=198">Laurie
+        DeLeve</a> both at USC to build falsifiable mechanistic alternative
+        models to help decouple the correlations from the causal
+        influences.
+        </td>
+      </tr>
+    </table>
 
-    <li><h3>Aspect-Oriented Modeling</h3>
-      <p>Models must be capable of representing multiple, possiblyincommensurate,perspectives.</p>
-    </li>
+    <p><font size="-1">Please note that, in
+the <a href="http://biosystems.ucsf.edu/">BioSystems Group at
+UCSF</a>, there are several projects that, for various reasons, are
+not yet compliant with the FURM method, but the plan is that they all
+evolve to do so.</font></p>
 
-    <li><h3>Arbitrary Functional Granularity</h3>
-      <p>The composition of any system can be dynamic or open to interpretation.  Hence fixed compositional attributes (like hierarchy) are always weak points in any given model. If a model preserves the ability to re-specify or re-interpret its functional granularity, these weak points are hardened.</p>
-    </li>
+    <table width="100%" border="1">
+      <tr><td colspan="0"><h3>Spin-off projects</h3></td></tr>
+      <tr>
+          <td><a href="./glossary.html"><font size="+1">Glossary</font></a></td>
+          <td><p>Many of the issues we cover present the typical inter-disciplinary problem of getting everyone to use a stable lexicon.  The glossary is an attempt to hone in on definitions of terms as we would like to see them used.  None of these definitions are intended to be universal or authoritative.  Indeed, we expect them to change daily.  But, presenting them gives some stability to the other work and the communication required for these projects.
+          <p>Credit goes to Dr. Bernie Zeigler for the inspiration of this glossary and many of the definitions herein.   <a href="http://www.acims.arizona.edu/EDUCATION/education.shtml#c.adef">ACIMS Definitions</a></td>
+          </tr>
+    </table>
 
-    <li><h3>Experimental Procedure Encapsulation</h3>
-      <p>Capture experimental procedures in an unambiguous way so that different experiments give similarly formatted results and are easily repeatable, preferably automatically repeatable and extensible.</p>
-    </li>
 
-    <li><h3>Multiple Models</h3>
-      <p>Always run multiple models, in tandem, of the same referent.</p>
-    </li>
 
-    <li><h3>Automated Model Generation</h3>
-      <p>Build mechanisms to automate (or at least assist in) the generation of new models.</p>
-    </li>
-
-    <li><h3>Experimental Computing</h3>
-      <p>Treat any computational process as if it were a black box with an impenetrable boundary around it.</p>
-    </li>
-  </ul>
-          
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="building_block" id="pgbldblk27">
