@@ -1,0 +1,389 @@
+/*
+-----------------------------------------------------------------------------------------
+CSS document: ImageCafe Template Styles
+Created: 12/22/2005
+Last Modified: 03/02/2006
+NOTE: Template styles included here cannot be changed by the customer
+-------------------------------------------------------------------------------------- */
+* {margin:0;padding:0;}  /* zero out everything */
+body {width:100%;}
+/*
+-----------------------------------------------------------------------------------------
+Global
+-------------------------------------------------------------------------------------- */
+div {position:relative;}
+#printwrap {position:static;}
+h1, h2, h3, h4, h5, h6 {margin:10px;}
+h1#website-title {margin:0;}
+h2#website-slogan {margin:0;}
+#nav-wrapper #navcontainer div h3 {margin:0;}
+#nav-wrapper #navcontainer div h3 {margin:0;}
+ul, ol {
+	margin:10px;
+	padding:0 0 0 20px;
+}
+ol {padding:0 0 0 30px;}
+blockquote {margin:10px 10px 10px 40px;}
+.clearer {clear:both;}
+/*
+-----------------------------------------------------------------------------------------
+General Layout Structure
+-------------------------------------------------------------------------------------- */
+#nav-top, #nav-left, #nav-right {
+	float:left;
+	width:100%;
+}
+#inner {
+	float:left;
+	width:760px;
+}
+#website-title {padding:0 0 5px 10px;}
+#website-slogan {padding:20px 10px 0 10px}
+.accent-none {display:none;}
+
+/*
+-----------------------------------------------------------------------------------------
+=#NAV-TOP
+-------------------------------------------------------------------------------------- */
+/*------------------ Layout ------------------*/	
+#nav-top #headertop {
+	float:left;
+	margin:0px 0 0 0;
+	padding:45px 0 0 0;
+	width:760px;
+	clear:both;
+}
+#nav-top #inner {
+	clear:both;
+}
+#nav-top #nav-wrapper {
+	float:left;
+	width:760px;
+	border-top:1px solid #999;
+	border-bottom:1px solid #999;
+	z-index:1000;
+}
+#nav-top #content {
+	float:left;
+	width:760px;
+	border-top:10px solid #E3E3E3;
+}
+#nav-top #footer {
+	clear:left;
+	width:760px;
+	height:20px;
+	border-top:1px solid #fff;
+	top:20px;
+}
+
+#nav-top #website-title {
+	float:left;
+	width:750px;
+}
+
+/*------------------ Navigation Elements ------------------*/	
+#nav-top #nav-wrapper #navcontainer div, #nav-top #nav-wrapper #navcontainer div h3 {
+	float:left;
+	display:block;
+	cursor:pointer;
+}
+	#nav-top #nav-wrapper #navcontainer div a:link, 
+	#nav-top #nav-wrapper #navcontainer div a:active, 
+	#nav-top #nav-wrapper #navcontainer div a:visited {
+		float:left;
+		border-right:1px solid #ddd;
+		padding:10px 10px 5px 10px;
+		text-decoration:none;
+		white-space: nowrap;
+	}
+	#nav-top #nav-wrapper #navcontainer div a:hover {
+		padding-top:5px;
+		border-top:5px solid #e5e5e5;
+	}
+		#nav-top #nav-wrapper #navcontainer div div.submenu, 
+		#nav-top #nav-wrapper #navcontainer div div.submenu h3 {
+			float:left;
+			display:block;
+		}
+		#nav-top #nav-wrapper #navcontainer div div.submenu {
+			position:absolute;
+			top:0;
+			left:0;
+			visibility: hidden;
+			width:200px;
+			border-left:1px solid #ddd;
+			border-right:1px solid #ddd;
+			border-bottom:1px solid #ddd;
+		}
+			#nav-top #nav-wrapper #navcontainer div div.submenu div {display:block;}
+			#nav-top #nav-wrapper #navcontainer div div.submenu a:link, 
+			#nav-top #nav-wrapper #navcontainer div div.submenu a:active, 
+			#nav-top #nav-wrapper #navcontainer div div.submenu a:visited {
+				float:left;
+				border-top:1px solid #ddd;
+				width:180px;
+				word-wrap: break-word;
+				white-space: normal;
+			}
+				#nav-top #nav-wrapper #navcontainer div div.submenu a:hover {
+					padding:10px 10px 5px 5px;
+					border-left:5px solid #e5e5e5;
+				}
+
+/*------------------ Table Structures ------------------*/		
+#nav-top #content-table {
+	width:750px;
+}
+	#nav-top #content-table-main {width:551px;}
+		#nav-top #content-table-main p {margin:10px 20px 15px 10px;}
+	#nav-top #content-table-sub {
+		display:block;
+		width:199px;
+		height:418px
+	}
+/*
+-----------------------------------------------------------------------------------------
+=#NAV-LEFT
+-------------------------------------------------------------------------------------- */
+/*------------------ Layout ------------------*/	
+	#nav-left #headertop {
+		clear:both;
+		margin:0px 0 0 0;
+		padding:45px 0 0 0;
+		width:760px;
+		border-bottom:1px solid #999;
+	}
+	#nav-left #inner {
+		width=550px;
+		float:left;
+		border-top:1px solid #fff;
+
+	}
+	#nav-left #nav-wrapper #navcontainer {
+		float:left;
+		width:200px;
+		z-index:1000;
+	}
+	#nav-left #nav-wrapper {
+		float:left;
+		width:200px;
+		height:100%;
+		z-index:1000;
+	}
+	#nav-left #content {
+		float:left;
+		width:555px;
+		border-left:5px solid #E3E3E3;
+	}
+	#nav-left #footer {
+		clear:both;
+		width:760px;
+    	height:20px;
+		border-top:1px solid #fff;
+		top:20px;
+	}
+
+
+
+/*------------------ Navigation Elements ------------------*/
+#nav-left #nav-wrapper #navcontainer div {
+	float:left;
+	display:block;
+	cursor:pointer;
+}
+	#nav-left #nav-wrapper #navcontainer div a:link, 
+	#nav-left #nav-wrapper #navcontainer div a:active, 
+	#nav-left #nav-wrapper #navcontainer div a:visited  {
+		float:left;
+		/*--- width for IE5 --*/
+			width:200px;
+		border-bottom:1px solid #ddd;
+		padding:10px;
+		text-decoration:none;
+		/*--- width for all other browsers --*/
+			voice-family: "\"}\"";
+			voice-family:inherit;
+			width:180px;
+			word-wrap: break-word;
+	}
+	#nav-left #nav-wrapper #navcontainer div a:hover {
+		padding-left:5px;
+		border-left:5px solid #e5e5e5;
+	}
+		#nav-left #nav-wrapper #navcontainer div div.submenu, 
+		#nav-left #nav-wrapper #navcontainer div div.submenu h3 {
+			float:left;
+			display:block;
+		}
+		#nav-left #nav-wrapper #navcontainer div div.submenu {
+			position:absolute;
+			top:0;
+			left:0;
+			visibility: hidden;
+			width:200px;
+			border-left:1px solid #ddd;
+			border-right:1px solid #ddd;
+		}
+			#nav-left #nav-wrapper #navcontainer div div.submenu div {display:block;}
+			#nav-left #nav-wrapper #navcontainer div div.submenu a:link, 
+			#nav-left #nav-wrapper #navcontainer div div.submenu a:active, 
+			#nav-left #nav-wrapper #navcontainer div div.submenu a:visited {
+				float:left;
+				word-wrap: break-word;
+			}
+				#nav-left #nav-wrapper #navcontainer div div.submenu a:hover {
+					padding-left:5px;
+					border-left:5px solid #e5e5e5;
+				}
+
+/*------------------ Table Structures ------------------*/	
+#nav-left #content-table {
+	width:550px;
+	float:left;
+}
+	#nav-left #content-table-main {width:351px;}
+		#nav-left #content-table-main p {margin:10px 20px 15px 10px;}
+	#nav-left #content-table-sub {
+		display:block;
+		width:199px;
+		height:418px
+	}
+/*
+-----------------------------------------------------------------------------------------
+=#NAV-RIGHT
+-------------------------------------------------------------------------------------- */
+/*------------------ Layout ------------------*/	
+	#nav-right #headertop {
+		clear:both;
+		margin:0px 0 0 0;
+		padding:45px 0 0 0;
+		width:750px;
+		border-bottom:1px solid #999;
+	}
+	#nav-right #inner {
+		float:left;
+		width:750px;
+		border-top:1px solid #fff;
+		height:100%;
+	}
+	#nav-right #nav-wrapper #navcontainer {
+		float:right;
+		width:200px;
+		z-index:1000;
+	}
+	#nav-right #nav-wrapper {
+		float:right;
+		width:200px;
+		height:100%;
+		z-index:1000;
+	}
+	#nav-right #content {
+		float:left;
+		width:545px;
+		height:100%;
+		border-right:5px solid #E3E3E3;
+	}
+	#nav-right #footer {
+		clear:both;
+		width:750px;
+		height:20px;
+		border-top:1px solid #fff;
+		top:20px;
+	}
+	
+/*------------------ Navigation Elements ------------------*/
+#nav-right #nav-wrapper #navcontainer div, #nav-right #nav-wrapper #navcontainer div h3 {
+	float:left;
+	display:block;
+	cursor:pointer;
+}
+	#nav-right #nav-wrapper #navcontainer div a:link, 
+	#nav-right #nav-wrapper #navcontainer div a:active, 
+	#nav-right #nav-wrapper #navcontainer div a:visited  {
+		float:left;
+		/*--- width for IE5 --*/
+			width:200px;
+		border-bottom:1px solid #ddd;
+		padding:10px;
+		text-decoration:none;
+		/*--- width for all other browsers --*/
+			voice-family: "\"}\"";
+			voice-family:inherit;
+			width:180px;
+			word-wrap: break-word;
+	}	
+	#nav-right #nav-wrapper #navcontainer div a:hover {
+		padding-left:5px;
+		border-left:5px solid #e5e5e5;
+	}
+		#nav-right #nav-wrapper #navcontainer div div.submenu, 
+		#nav-right #nav-wrapper #navcontainer div div.submenu h3 {
+			float:left;
+			display:block;
+		}
+		#nav-right #nav-wrapper #navcontainer div div.submenu {
+			position:absolute;
+			top:0;
+			left:0;
+			visibility: hidden;
+			width:200px;
+			border-left:1px solid #ddd;
+		}
+			#nav-right #nav-wrapper #navcontainer div div.submenu div {display:block;}
+			#nav-right #nav-wrapper #navcontainer div div.submenu a:link, 
+			#nav-right #nav-wrapper #navcontainer div div.submenu a:active, 
+			#nav-right #nav-wrapper #navcontainer div div.submenu a:visited {
+				float:left;
+				border-right:1px solid #ddd;
+				word-wrap: break-word;
+			}
+				#nav-right #nav-wrapper #navcontainer div div.submenu a:hover {
+					padding-left:5px;
+					border-left:5px solid #e5e5e5;
+				}
+	
+/*------------------ Table Structures ------------------*/		
+#nav-right #content-table {
+	width:545px;
+	float:left;
+}
+	#nav-right #content-table-main {width:351px;}
+		#nav-right #content-table-main p {margin:10px 20px 15px 10px;}
+	#nav-right #content-table-sub {
+		display:block;
+		width:199px;
+		height:418px
+	}
+		
+/*
+-----------------------------------------------------------------------------------------
+WIDE LAYOUT STYLES
+-------------------------------------------------------------------------------------- */
+body#wide #inner {width:1000px;}
+body#wide #nav-top #inner #nav-wrapper{width:1000px;}
+body#wide #nav-top #inner #content #website-slogan{width:980px;}
+body#wide #nav-top #inner #content {width:100%;}
+body#wide #nav-top #headertop {width:1000px;}
+body#wide #nav-top #footer {width:1000px;}
+body#wide #nav-top #content-table-main {width:795px;}
+body#wide #nav-top #content-table #content-table-sub {display:block;width:199px; height:418px;}
+
+/*------------------------------------ NAV-TOP ------------------------------------*/	
+body#wide #nav-top #content-table {width:1000px;}
+
+/*------------------------------------ NAV-LEFT ------------------------------------*/	
+body#wide #nav-left #content {width:795px;}
+	body#wide #nav-left #content-table {width:795px;}
+body#wide #nav-left #headertop {width:1000px;}
+body#wide #nav-left #footer {width:1000px;}
+	body#wide #nav-left #content-table-main {width:596px;}
+	body#wide #nav-left #content-table-sub {width:199px;}
+
+/*------------------------------------ NAV-RIGHT ------------------------------------*/	
+body#wide #nav-right #inner {width:1000px;}
+	body#wide #nav-right #content {width:795px;}
+		body#wide #nav-right #content-table {width:795px;}
+body#wide #nav-right #headertop {width:1000px;}
+body#wide #nav-right #footer {width:1000px;}
+		body#wide #nav-right #content-table-main {width:596px;}
+		body#wide #nav-right #content-table-sub {width:199px;}

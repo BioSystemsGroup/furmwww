@@ -1,26 +1,31 @@
-2012-06-28  gepr  <gepr@tempusdictum.com>
+2012-06-27  gepr  <gepr@tempusdictum.com>
 
-	* index.html (vlink): Added school of medicine to contact.
+	* index.html: Add anchors to remaining articles.  Remove online-only complexity article.
 
-2012-05-18  gepr  <gepr@n11not11>
+	* scripts/website.css: Remove stupid underlining of entire paragraphs.
 
-	* glossary.html: Added defn for "mechanism".
+2011-10-24  gepr  <gepr@tempusdictum.com>
 
-2012-05-16  glen e. p. ropella  <gepr@tempusdictum.com>
+	* index.html: Added Tbiomed "grounding" paper.
 
-	* glossary.html: New glossary identical to that in bsgwww (aka
-	biosystems.ucsf.edu).
-	* glossary.html: Added co-simulation, bisimulation, congruence,
-	weak bisimulation, and observational congruence.
+2010-12-20  glen e. p. ropella  <gepr@tempusdictum.com>
 
-2012-05-10  glen e. p. ropella  <gepr@tempusdictum.com>
+	* index.html: Added DDR paper.
 
-	* projects.html: Added blurbs on EI3, EC2, PtII-Bio, and APAP
-	Hepatoxicity.
+2010-12-03  glen e. p. ropella  <gepr@tempusdictum.com>
 
-	* Spelling fixes throughout.
+	* index.html(<a name="cvsc"/>): Added a new paper.
+	(<a name="tracingI"/>): Fixed date on this paper.  Added a name anchor.
 
-2010-06-16  glen e. p. ropella  <gepr@tempusdictum.com>
+2010-04-20  glen e. p. ropella  <gepr@tempusdictum.com>
 
-	* documents.html (frameborder): Add Shahab's JTB paper.
+	* index.html: Added new Tracing-II paper.
+
+2009-11-05  glen  <gepr@tempusdictum.com>
+
+	* index.html: Added new pharmres paper
+
+2009-01-16  glen  <gepr@tempusdictum.com>
+
+	* index.html: Added google verify meta tag.
 
