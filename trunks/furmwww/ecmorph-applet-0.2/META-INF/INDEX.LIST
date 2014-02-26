@@ -1,8 +1,0 @@
-JarIndex-Version: 1.0
-
-plot.jar
-ptolemy
-ptolemy/plot
-ptolemy/plot/plotml
-ptolemy/plot/compat
-
