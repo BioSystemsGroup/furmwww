@@ -39,7 +39,7 @@ var col_background="#ffffff";
 			<div id="navconmeasure"></div>
 		</div>
 		<div id="content" class="background">
-			<h2 id="website-slogan" class="secondary">Overview</h2>
+			<h2 id="website-slogan" class="secondary">Software</h2>
 			<div id="sloganmeasure" class="clearer"></div>
 			<table id="content-table">
         	 	<tr>
@@ -52,55 +52,97 @@ var col_background="#ffffff";
 <table border="0" name="" width="100%" cellpadding="5" cellspacing="0">
 <tr align="" valign="">
 <td colspan="1" rowspan="1" width="100%" align="" valign="top">
-  <p>FURM consists of 4 fundamental guidelines:
-    <ol type="1">
-      <li>Standardize interfaces to multi-paradigm, multi-mode, and
-        cross-trophic models, </li>
-      <li>use discrete interactions, </li>
-      <li>design for an extended life cycle, and </li>
-      <li>define observables that will submit to a similarity measure</li>
-    </ol>
-  </p>
 
-  <p>These four fundamental guidelines flow down into the following more concrete behaviors (principles) that constitute the modeling of functional units.</p>
+
+
+
+  <p>There is no software explicitly for FURM.  FURM is a<strong>method</strong> by which models are created.  The only software associated with FURM so far is the code for the ISL models and the experimental apparatus in which they sit.</p>
+
+  <h3>The In Silico Liver (ISL)</h3>
+
+  <p>The ISL models a mammalian liver undergoing perfusion. It represents a liver as a large, concurrent collection of similar lobules, which are the functional units of the liver.  Components mimic essential hepatic structure and behavior.  Sinusoidal blood flow through the lobules is represented by a directed graph connecting Sinusoidal Segment (SS) nodes.  There are many distinct flow paths from PORTAL VEIN TRACTS (PV) to CV.  A SS is a discretized, tube-like structure comprised of a BLOOD "Core" wrapped by three 2D grids (Spaces A-C), which together simulate a 3D structure. SS geometry is specified with two pseudo-random distributions specifying their length and circumference to provide sufficient variety of COMPOUND travel paths.  Compounds are represented using mobile objects that move through the LOBULE and interact with the various components of SSs. A typical COMPOUND maps to many drug molecules. A COMPOUND's behavior is determined by the physicochemical properties of its referent compound, along with the LOBULE and SS features it encounters. Multiple, different COMPOUNDs can percolate through the graph during the same experiment. Objects called CELLs (two types: ENDOTHELIAL CELLs and HEPATOCYTEs) represent an unspecified number of cells. CELLs contain objects and methods, including BINDERs and ENZYMEs, that interact with COMPOUND as it flows through an SS.  ENZYMEs in HEPATOCYTEs contain a METABOLIZE function that destroys COMPOUND and creates METABOLITE, which can then flow out through the SS network or be collected in the BILE DUCT.  The COMPOUND that flows out the CV is counted and used to validate against wet-lab perfusion data collected via a fraction collector.</p>
+
+  <p>More information on the ISL can be found <a href="./isl.html">here</a> as well as in some of our <a href="http://biosystems.ucsf.edu/publications.html">published papers.</a></p>
+
+
+  <h3>Downloads</h3>
 
   <ul>
-    <li><h3>Iterative Modeling</h3>
-      <p>Every model should be under continual evolution.  There is no optimal (finished) model.</p>
-    </li>
 
-    <li><h3>Model Comparison/Contrast</h3>
-      <p>Isolated models are nonsense.  They only make sense in relation, comparison, and contrast to other models.</p>
-    </li>
+    <li><a alt="Cloud vs. Cluster ISL code" href="http://www.biomedcentral.com/content/supplementary/1752-0509-4-168-s2.zip"> Cloud vs. Cluster ISL code</a> for our <a href="http://www.biomedcentral.com/1752-0509/4/168">paper in BMC Systems Biology</a></li>
 
-    <li><h3>V&V</h3>
-      <p>Every component of a model should be open to validation (data permitting) based on clearly defined measures.  Verification should be limited to the examination of networks of validatable components.</p>
-    </li>
+    <li><a href="./isl/cvsc">Browseable Source Code for an example Cloud vs. Cluster experiment.</a></li>
 
-    <li><h3>Aspect-Oriented Modeling</h3>
-      <p>Models must be capable of representing multiple, possiblyincommensurate,perspectives.</p>
-    </li>
+  </ul>
 
-    <li><h3>Arbitrary Functional Granularity</h3>
-      <p>The composition of any system can be dynamic or open to interpretation.  Hence fixed compositional attributes (like hierarchy) are always weak points in any given model. If a model preserves the ability to re-specify or re-interpret its functional granularity, these weak points are hardened.</p>
-    </li>
+  <h3>Documentation</h3>
 
-    <li><h3>Experimental Procedure Encapsulation</h3>
-      <p>Capture experimental procedures in an unambiguous way so that different experiments give similarly formatted results and are easily repeatable, preferably automatically repeatable and extensible.</p>
-    </li>
+  <p>The only documentation we have so far is the content of our Technical Report and submitted papers, available in the <a href="./documents.html" target="_top">Documents</a> section.</p>
 
-    <li><h3>Multiple Models</h3>
-      <p>Always run multiple models, in tandem, of the same referent.</p>
-    </li>
+  <p>However, below are some UML-ish diagrams that help explain the structure of the software.  These diagrams have been purposefully simplified to get across the primary structure of the system.</p>
 
-    <li><h3>Automated Model Generation</h3>
-      <p>Build mechanisms to automate (or at least assist in) the generation of new models.</p>
-    </li>
+  <h3>Main Class Diagram</h3>
 
-    <li><h3>Experimental Computing</h3>
-      <p>Treat any computational process as if it were a black box with an impenetrable boundary around it.</p>
+  <p>This is the class diagram for the experiment level of the ISL.  This is the level at which experiments are set up, controlled, and logged.</p> <center><img alt="Main Class Diagram" src="images/main_inheritance.png"></center>
+
+  <h3>Reference Model Inheritance Diagram</h3>
+
+  <p>This shows the rather simple inheritance relationships used in the RefModel.  The simplicity of this diagram is not really deceiving because this model really is just a simple mathematical function evaluated at each time step.</p>
+  <center><img alt="RefModel Inheritance Diagram" src="images/refModel_inheritance.png"></center>
+
+  <h3>Articulated Model Inheritance</h3>
+
+  <p>The ArtModel is clearly the most complicated component of the ISL.  When looking at this and the subsequent constituents diagrams, refer to the description of the model on the <a href="./isl.html" target="_top">ISL</a> page.</p>
+  <center><img alt="ArtModel Inheritance Diagram" src="images/artModel_inheritance.png"></center>
+
+  <h3>Articulated Model Constituents</h3>
+
+  <p>This diagram lists the classes whose objects participate in the evaluation of the ArtModel.  It indicates run-time composition.</p>
+  <center><img alt="ArtModel Constituents" src="images/artModel_constituents.png"></center>
+
+  <h3>Model Utilities Inheritance</h3>
+
+  <p>The model utilities are miscellaneous things we had to create to augment the Swarm framework to support the ISL.  Other ABM packages have analogues to many of these components and when the ISL is ported to another platform, this package is expected to change accordingly.</p>
+  <center><img alt="ModelUtils Inheritance" src="images/modelUtils_inheritance.png"></center>
+
+  <h3>Graph Package Inheritance</h3>
+
+  <p>This is a modified version of a directed graph library contribution to Swarm.  There are a number of changes we made to the API and we added some extra functionality.  But, the structure is the same.</p>
+  <center><img alt="Graph Inheritance" src="images/graph_inheritance.png"></center>
+
+  <h3>Local Random Constituents</h3>
+
+  <p>These are a few random number distributions are provided in the global scope for use in the various models. They're "local" to the ISL and distinct from the default distributions provided by Swarm.</p>
+  <center><img alt="LocalRandom Constituents" src="images/LocalRandom_constituents.png"></center>
+
+  <h3>Notes</h3>
+
+  <ul>
+    <li>The ISL is written using a combination of Objective-C and C++.  Hence, the elements of these diagrams do not translate as directly as they would to Java.</li>
+    <li>We are in the process of making several extensions to the model, including adding enzyme induction and elimination.  So, these diagrams are already slightly out-of-date.  But, there should be enough here to present the gist.</li>
+    <li>The GML (Graph Modeling Language) class is just an abstraction allowing the ArtModel to read the directed graph of sinusoidal segments from a GML file.  It's not clear that GML is the best format for this application; but, it is much more self-descriptive than a simple adjacency matrix and it can include visualization information.  We intend to add visualization in the near future.  In the meantime, we manipulate the graphs with tools like Tulip and GVF.</li>
+    <li>We also have a lobule architecture specific parametrized way of specifying graphs called the LobuleSpec in the form of a matrix with the following structure:
+      <table border="1">
+        <tr><td>Zone I nodes</td> <td>Zone II nodes</td> <td>Zone III nodes</td></tr>
+        <tr><td>I->I edges</td> <td>I->II edges</td> <td>I->III edges</td></tr>
+        <tr><td>II->I edges</td> <td>II->II edges</td> <td>II->III edges</td></tr>
+        <tr><td>III->I edges</td> <td>III->II edges</td> <td>III->III edges</td></tr>
+      </table>
     </li>
   </ul>
+
+  <h3>Questions?</h3>
+
+  <p>If you have any questions about the model or the software, contact Professor Hunt via the contact info on the <a href="./index.html" target="_top">Home page</a>.</p>
+
+  <p>We also have a mailing list for the discussion of FURM-related projects, software, design goals, and all the peripheral subjects like tools, techniques, etc.  If you would like to stay informed about FURM, subscribe to this mailing list by following the instructions at: <a href="http://tempusdictum.com/mailman/listinfo/furm"> http://tempusdictum.com/mailman/listinfo/furm</a></p>
+
+
+
+
+
+
+
           
 </td>
 </tr>
